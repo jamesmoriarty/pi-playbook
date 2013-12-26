@@ -1,6 +1,6 @@
 ---
 - name: reload transmission-daemon
-  service: name=transmission-daemon state=reload
+  service: name=transmission-daemon state=reloaded
 
 - name: restart transmission-daemon
   service: name=transmission-daemon state=restarted

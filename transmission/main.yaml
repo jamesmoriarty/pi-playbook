@@ -1,7 +1,11 @@
 ---
-- hosts: home
+- hosts: all
   user: $user
   sudo: yes
+  vars_files:
+    - ../vars/main.yaml
+  handlers:
+    - include: handlers/main.yaml
   tasks:
     # install the package "transmission-daemon"
     - apt: pkg=transmission-daemon state=present
@@ -13,7 +17,7 @@
     - service: name=transmission-daemon enabled=yes
 
     # copy settings
-    - copy: src=templates/settings.json dest=/etc/transmission-daemon/settings.json owner=debian-transmission group=debian-transmission
+    - template: src=templates/settings.json dest=/etc/transmission-daemon/settings.json owner=debian-transmission group=debian-transmission
       notify:
         - reload transmission-daemon
         - restart transmission-daemon

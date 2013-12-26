@@ -1,0 +1,28 @@
+---
+- hosts: all
+  user: $user
+  sudo: yes
+  vars_files:
+    - ../vars/main.yaml
+  handlers:
+    - include: handlers/main.yaml
+  tasks:
+    # install the package "samba"
+    - apt: pkg=samba state=present
+
+    # install the package "samba-common-bin"
+    - apt: pkg=samba-common-bin state=present
+
+    # ensure "samba" service is enabled
+    - service: name=samba enabled=yes
+
+    # config login
+    - action: command su - root -c "echo -e '{{ password }}\n{{ password }}' | smbpasswd -s -a -U {{ user }}"
+      notify:
+        - restart samba
+
+    # copy settings
+    - copy: src=templates/smb.conf dest=/etc/samba/smb.conf
+      notify:
+        - restart samba
+
