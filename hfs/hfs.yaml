@@ -1,0 +1,17 @@
+---
+- hosts: home
+  user: $user
+  sudo: yes
+  tasks:
+    # install the package "hfsplus"
+    - apt: pkg=hfsplus state=present
+
+    # install the package "hfsutils"
+    - apt: pkg=hfsutils state=present
+
+    # install the package "hfsprogs"
+    - apt: pkg=hfsprogs state=present
+
+    - action: command mkdir -p /media/usb0
+
+    - lineinfile: dest=/etc/fstab regexp="/dev/sda2" insertafter=EOF line="/dev/sda2       /media/usb0     hfsplus rw,force,exec,auto,users 0 3"

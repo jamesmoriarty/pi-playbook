@@ -1,0 +1,20 @@
+---
+- hosts: home
+  user: $user
+  sudo: yes
+  tasks:
+    # install the package "transmission-daemon"
+    - apt: pkg=transmission-daemon state=present
+
+    # install the package "transmission"
+    - apt: pkg=transmission state=present
+
+    # ensure "transmission-daemon" service is enabled
+    - service: name=transmission-daemon enabled=yes
+
+    # copy settings
+    - copy: src=templates/settings.json dest=/etc/transmission-daemon/settings.json owner=debian-transmission group=debian-transmission
+      notify:
+        - reload transmission-daemon
+        - restart transmission-daemon
+
