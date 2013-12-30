@@ -22,7 +22,7 @@
         - restart samba
 
     # copy settings
-    - copy: src=templates/smb.conf dest=/etc/samba/smb.conf
+    - template: src=templates/smb.conf dest=/etc/samba/smb.conf
       notify:
         - restart samba
 

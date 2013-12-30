@@ -2,6 +2,8 @@
 - hosts: all
   user: $user
   sudo: yes
+  vars_files:
+    - ../vars/main.yaml
   tasks:
     # install the package "hfsplus"
     - apt: pkg=hfsplus state=present
@@ -13,7 +15,7 @@
     - apt: pkg=hfsprogs state=present
 
     # create folder for mount
-    - file: path=/media/usb0 state=directory
+    - file: path={{ storage_path }} state=directory
 
     # config mount
-    - lineinfile: dest=/etc/fstab regexp="/dev/sda2" insertafter=EOF line="/dev/sda2       /media/usb0     hfsplus rw,force,exec,auto,users 0 3"
+    - lineinfile: dest=/etc/fstab regexp="/dev/sda2" insertafter=EOF line="/dev/sda2       {{ storage_path }}     hfsplus rw,force,exec,auto,users 0 3"

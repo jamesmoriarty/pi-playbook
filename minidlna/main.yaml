@@ -2,6 +2,8 @@
 - hosts: all
   user: $user
   sudo: yes
+  vars_files:
+    - ../vars/main.yaml
   handlers:
     - include: handlers/main.yaml
   tasks:
@@ -12,6 +14,6 @@
     - service: name=minidlna enabled=yes
 
     # config
-    - lineinfile: dest=/etc/minidlna.conf regexp="media_dir=" line="media_dir=/media/usb0/downloads"
+    - lineinfile: dest=/etc/minidlna.conf regexp="media_dir=" line="media_dir={{ storage_path }}/downloads"
       notify:
         - reload minidlna
