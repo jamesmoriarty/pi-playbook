@@ -3,7 +3,7 @@
   user: $user
   sudo: yes
   handlers:
-    - include: handlers/main.yaml
+    - include: handlers/main.yml
   tasks:
     # install the package "nginx"
     - apt: pkg=nginx state=present

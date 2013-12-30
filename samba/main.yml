@@ -3,9 +3,9 @@
   user: $user
   sudo: yes
   vars_files:
-    - ../vars/main.yaml
+    - ../vars/main.yml
   handlers:
-    - include: handlers/main.yaml
+    - include: handlers/main.yml
   tasks:
     # install the package "samba"
     - apt: pkg=samba state=present

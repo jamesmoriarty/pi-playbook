@@ -1,7 +1,0 @@
----
-  - include: common/main.yaml
-  - include: hfs/main.yaml
-  - include: samba/main.yaml
-  - include: transmission/main.yaml
-  - include: nginx/main.yaml
-  - include: minidlna/main.yaml

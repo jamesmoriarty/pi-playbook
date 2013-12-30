@@ -1,0 +1,7 @@
+---
+  - include: common/main.yml
+  - include: hfs/main.yml
+  - include: samba/main.yml
+  - include: transmission/main.yml
+  - include: nginx/main.yml
+  - include: minidlna/main.yml

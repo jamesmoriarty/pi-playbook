@@ -4,7 +4,7 @@ Raspberry Pi
 You must provide a var file.
 
     ---
-    # vars/main.yaml
+    # vars/main.yml
     user: someone
     password: something
     storage_path: /media/usb0
