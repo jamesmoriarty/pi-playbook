@@ -1,0 +1,4 @@
+---
+- name: force-reload minidlna
+  command: service minidlna force-reload
+

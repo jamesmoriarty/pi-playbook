@@ -1,0 +1,6 @@
+- apt: pkg={{ item }} state=present
+  with_items:
+    - curl
+    - dnsutils
+
+- cron: name=dyndns minute=0 job="curl https://api.digitalocean.com/domains/43342/records/304426/edit\?client_id\={{ client_id }}\&api_key\={{ api_key }}\&data\=$(dig +short myip.opendns.com @resolver1.opendns.com)"

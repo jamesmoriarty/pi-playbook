@@ -1,0 +1,9 @@
+- apt: pkg=nginx state=present
+
+- service: name=nginx enabled=yes
+
+- file: path=/etc/nginx/sites-enabled/default state=absent
+
+- copy: src=transmission dest=/etc/nginx/sites-enabled/transmission owner=root group=root
+  notify:
+    - restart nginx

@@ -1,0 +1,14 @@
+- apt: pkg={{ item }} state=present
+  with_items:
+    - samba
+    - samba-common-bin
+
+- service: name=samba enabled=yes
+
+- action: command su - root -c "echo -e '{{ password }}\n{{ password }}' | smbpasswd -s -a -U {{ user }}"
+  notify:
+    - restart samba
+
+- template: src=smb.conf dest=/etc/samba/smb.conf
+  notify:
+    - restart samba

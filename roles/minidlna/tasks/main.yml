@@ -1,0 +1,7 @@
+- apt: pkg=minidlna state=present
+
+- service: name=minidlna enabled=yes
+
+- lineinfile: dest=/etc/minidlna.conf regexp="media_dir=" line="media_dir={{ storage_path }}/downloads"
+  notify:
+    - force-reload minidlna

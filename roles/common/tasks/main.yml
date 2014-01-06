@@ -1,0 +1,5 @@
+- user: name={{ user }} password={{ password }}
+
+- apt: update_cache=yes
+
+- apt: pkg=fail2ban state=present

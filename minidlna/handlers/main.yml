@@ -1,4 +1,0 @@
----
-- name: reload minidlna
-  service: name=minidlna state=reloaded
-

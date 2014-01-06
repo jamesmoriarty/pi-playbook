@@ -1,7 +1,0 @@
----
-- hosts: all
-  user: $user
-  sudo: yes
-  tasks:
-    # install the package "fail2ban"
-    - apt: pkg=fail2ban state=present

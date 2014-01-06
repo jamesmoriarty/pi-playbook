@@ -1,0 +1,9 @@
+- apt: pkg={{ item }} state=present
+  with_items:
+    - hfsplus
+    - hfsutils
+    - hfsprogs
+
+- file: path={{ storage_path }} state=directory
+
+- lineinfile: dest=/etc/fstab regexp="/dev/sda2" insertafter=EOF line="/dev/sda2       {{ storage_path }}     hfsplus rw,force,exec,auto,users 0 3"

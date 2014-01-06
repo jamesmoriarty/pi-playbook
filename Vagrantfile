@@ -1,0 +1,18 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+# Vagrantfile API/syntax version. Don't touch unless you know what you're doing!
+VAGRANTFILE_API_VERSION = "2"
+
+Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
+  # Every Vagrant virtual environment requires a box to build off of.
+  config.vm.box = "debian-7.2.0"
+
+  config.vm.network :private_network, ip: "192.168.111.222"
+
+  config.vm.provision "ansible" do |ansible|
+    ansible.inventory_path = "hosts"
+    ansible.playbook       = "server.yml"
+    ansible.sudo            = true
+  end
+end

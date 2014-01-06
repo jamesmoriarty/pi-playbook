@@ -1,0 +1,12 @@
+---
+- name: all
+  hosts: all
+  vars_files:
+    - vars/main.yml
+  roles:
+    - common
+    - hfs
+    - samba
+    - transmission
+    - nginx
+    - minidlna
