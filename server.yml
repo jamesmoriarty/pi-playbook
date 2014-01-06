@@ -5,7 +5,9 @@
     - vars/main.yml
   roles:
     - common
+    - dyndns
     - hfs
+    - afp
     - samba
     - transmission
     - nginx

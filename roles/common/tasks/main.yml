@@ -2,4 +2,9 @@
 
 - apt: update_cache=yes
 
-- apt: pkg=fail2ban state=present
+- apt: pkg={{ item }} state=present
+  with_items:
+    - fail2ban
+    - htop
+    - tmux
+    - vim

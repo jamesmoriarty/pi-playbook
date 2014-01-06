@@ -1,0 +1,6 @@
+# The line below sets some DEFAULT, starting with Netatalk 2.1.
+# Netatalk defaults applied to shares
+:DEFAULT: options:upriv,usedots
+~/      "Home Directory"
+/media/ "Media"
+# End of File

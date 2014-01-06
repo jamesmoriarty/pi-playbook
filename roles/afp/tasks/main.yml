@@ -1,0 +1,14 @@
+- apt: pkg={{ item }} state=present
+  with_items:
+    - netatalk
+    - avahi-daemon
+
+- service: name=avahi-daemon enabled=yes
+
+- copy: src=AppleVolumes.default dest=/etc/netatalk/AppleVolumes.default
+  notify:
+    - restart netatalk
+
+- copy: src=afpd.service dest=/etc/avahi/services/afpd.service
+  notify:
+    - restart avahi
