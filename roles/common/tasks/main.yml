@@ -1,4 +1,4 @@
-- user: name={{ user }} password={{ password }}
+- user: name={{ user }}
 
 - apt: update_cache=yes
 
